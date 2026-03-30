@@ -1,0 +1,232 @@
+Agora transforme o sistema VIGORA em um produto funcional, conectando-o a um backend real com Supabase.
+
+OBJETIVO
+Quero sair de uma interface mockada para um SaaS funcional com:
+- persistência real de dados
+- autenticação real
+- CRUD completo
+- relacionamentos entre entidades
+- central de alertas funcional
+- suporte a tema claro, escuro e automático
+
+DIREÇÃO TÉCNICA
+- Estruture o projeto com código limpo e organizado
+- Separe bem front-end, lógica de dados, serviços e componentes
+- Prepare o projeto para evolução futura
+- Use Supabase como backend principal
+- Crie tudo de modo compatível com o ambiente do Replit
+- Configure variáveis de ambiente para URL e chaves do Supabase
+
+AUTENTICAÇÃO
+Implementar autenticação real com Supabase Auth:
+- cadastro
+- login
+- logout
+- recuperação de sessão
+- proteção de rotas privadas
+- redirecionamento adequado
+
+No cadastro, usar:
+- nome completo
+- email
+- telefone
+- senha
+
+Ao criar conta, garantir que o perfil do usuário seja salvo corretamente.
+
+BANCO DE DADOS
+Crie e conecte as seguintes entidades:
+
+USUARIOS
+- id
+- nome
+- email
+- telefone
+- theme_preference
+- created_at
+
+CLIENTES
+- id
+- nome
+- cpf_cnpj
+- telefone
+- email
+- observacoes
+- created_at
+- user_id
+
+PROCESSOS
+- id
+- numero_processo
+- tribunal
+- area
+- status
+- observacoes
+- cliente_id
+- responsavel_id
+- created_at
+- user_id
+
+PRAZOS
+- id
+- processo_id
+- tipo
+- descricao
+- data_limite
+- prioridade
+- status
+- responsavel_id
+- created_at
+- user_id
+
+TAREFAS
+- id
+- titulo
+- descricao
+- processo_id
+- prazo_id
+- data_limite
+- status
+- responsavel_id
+- created_at
+- user_id
+
+ALERTAS
+- id
+- tipo
+- mensagem
+- referencia_id
+- referencia_tipo
+- lido
+- created_at
+- user_id
+
+PERFIL DO USUÁRIO
+Além do auth, criar/usar tabela de perfil com:
+- id
+- nome
+- email
+- telefone
+- theme_preference
+- created_at
+
+Se o projeto separar auth e perfil, manter isso bem organizado.
+
+CRUD COMPLETO
+Implementar CRUD real para:
+- clientes
+- processos
+- prazos
+- tarefas
+
+Cada módulo deve permitir:
+- criar
+- listar
+- editar
+- excluir
+- buscar
+- filtrar
+
+Conectar formulários reais às tabelas do Supabase.
+
+RELACIONAMENTOS
+Garantir relacionamentos corretos:
+- cliente possui vários processos
+- processo possui vários prazos
+- processo possui várias tarefas
+- prazo pode estar vinculado a uma tarefa
+- alertas se relacionam com processos, prazos ou tarefas
+
+DASHBOARD COM DADOS REAIS
+Substituir os dados mockados por dados reais do banco.
+
+Os cards do dashboard devem refletir:
+- total de processos ativos
+- total de prazos da semana
+- prazos vencendo hoje
+- prazos vencidos
+- taxa de cumprimento
+- alertas críticos
+
+CENTRAL DE ALERTAS
+Criar lógica funcional de alertas.
+
+Gerar alertas automaticamente quando:
+- um prazo estiver vencido
+- um prazo estiver a até 2 dias de vencer
+- uma tarefa estiver atrasada
+- um novo prazo for criado
+
+Esses alertas devem:
+- aparecer no dashboard
+- aparecer na página de alertas
+- permitir marcar como lido
+
+TEMA LIGHT / DARK / SYSTEM
+Implementar sistema completo de tema com 3 opções:
+- Claro
+- Escuro
+- Automático
+
+REGRAS
+- a preferência deve ser carregada ao entrar
+- se estiver em Automático, seguir o sistema operacional do usuário
+- a troca deve acontecer em tempo real sem reload
+- salvar a preferência localmente para resposta rápida
+- salvar a preferência no banco para persistir entre dispositivos
+
+Adicionar em Configurações uma seção chamada:
+“Aparência”
+
+Com opções:
+- Claro
+- Escuro
+- Automático
+
+No modo escuro:
+- manter identidade premium
+- usar o Dark Blue como base institucional
+- garantir contraste alto e boa leitura
+
+No modo claro:
+- usar o Off-White como base
+- manter visual limpo e sofisticado
+
+ESTRUTURA DE CONFIGURAÇÃO
+Criar a página de Configurações com pelo menos:
+- dados do perfil
+- aparência
+- preferências básicas do usuário
+
+ROTEAMENTO E ESTADO
+Garantir:
+- rotas protegidas para área autenticada
+- loading states reais
+- tratamento de erro
+- mensagens de sucesso
+- estados vazios
+- atualização automática após operações
+
+QUALIDADE DE EXPERIÊNCIA
+Quero que o sistema pareça um SaaS real e utilizável.
+Nada de integração superficial.
+Tudo deve estar funcional no que diz respeito a:
+- login
+- cadastro
+- sessão
+- CRUD
+- persistência
+- tema
+- alertas
+
+IMPORTANTE
+Use boas práticas:
+- variáveis de ambiente para Supabase
+- estrutura de componentes reutilizáveis
+- tratamento de erros
+- organização clara do código
+- preparação para futura integração com automações externas
+
+ENTREGA
+Quero o app funcional dentro do Replit, pronto para eu conectar meu Supabase e testar a aplicação de verdade.
+Se necessário, já crie utilitários, serviços e helpers para integração com Supabase, autenticação e tema global.

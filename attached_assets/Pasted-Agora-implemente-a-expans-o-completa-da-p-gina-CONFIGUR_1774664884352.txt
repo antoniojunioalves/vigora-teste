@@ -1,0 +1,121 @@
+Agora implemente a expansão completa da página CONFIGURAÇÕES no sistema VIGORA.
+
+IMPORTANTE
+- Criar seções organizadas dentro de Configurações
+- Usar layout em abas ou blocos
+
+==================================================
+1. USUÁRIOS
+==================================================
+
+Criar módulo completo de usuários com duas áreas:
+
+COLABORADORES:
+Campos:
+- nome
+- email
+- perfil (adm, colaborador)
+- cargo
+- acesso ao financeiro (sim/não)
+- status (ativo/inativo)
+
+Funcionalidades:
+- criar
+- editar
+- filtrar por status
+- filtrar por perfil
+
+TIMES:
+- nome do time
+- membros
+- filtros
+
+==================================================
+2. TERMO MONITORADO
+==================================================
+
+Criar campo para cadastro de termos monitorados.
+
+==================================================
+3. FINANCEIRO (CONFIG)
+==================================================
+
+Criar estruturas:
+- contas
+- cartões
+- categorias
+- centro de custos
+
+==================================================
+4. TAREFAS (CONFIG)
+==================================================
+
+Criar:
+- botão "Nova tarefa padrão"
+Campos:
+- nome
+- fase do processo
+- complexidade
+- tempo médio
+
+==================================================
+5. WORKFLOW
+==================================================
+
+Criar:
+- nome do workflow
+- tarefa
+- responsável
+- prazo em dias
+
+==================================================
+6. GRUPO DE AÇÃO
+==================================================
+
+Campos:
+- nome do grupo
+- responsável pelas intimações
+
+==================================================
+7. TIPOS DE AÇÃO
+==================================================
+
+Campos:
+- nome
+- grupo vinculado
+
+==================================================
+8. METAS
+==================================================
+
+Campos:
+- metas por setor
+
+==================================================
+9. ORIGEM DE PESSOAS
+==================================================
+
+Campos:
+- origem (facebook, google, indicação etc)
+
+==================================================
+10. PARCEIROS
+==================================================
+
+Cadastro simples
+
+==================================================
+11. INTEGRAÇÕES E API
+==================================================
+
+Adicionar opções:
+- RD Station
+- Asaas
+- Google Agenda
+- etc
+
+==================================================
+RESULTADO
+==================================================
+
+Página de configurações robusta e organizada.

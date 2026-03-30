@@ -1,0 +1,95 @@
+## Contexto do Projeto
+Você está continuando o desenvolvimento de um MVP de sistema de gestão de processos para advogados. O sistema já possui um cadastro de processos funcional. Agora precisamos adicionar duas novas funcionalidades relacionadas a notificações via WhatsApp.
+
+---
+
+## Funcionalidade 1: Cadastro de Números WhatsApp
+
+### Requisitos
+1. **Nova página/tela de cadastro** chamada "Contatos WhatsApp" ou "Números WhatsApp"
+2. **Formulário com os seguintes campos:**
+   - Nome do contato (texto, obrigatório)
+   - Número de WhatsApp (texto, obrigatório, validar formato - pode aceitar DDD + número ou com +55)
+   - Email (opcional, para referência)
+   - Status (ativo/inativo - dropdown ou toggle)
+   - Data de criação (preenchida automaticamente)
+   - Observações (texto livre, opcional)
+
+3. **Funcionalidades CRUD completas:**
+   - Criar novo número WhatsApp
+   - Listar todos os números cadastrados em uma tabela/grid
+   - Editar número existente
+   - Deletar número (com confirmação)
+   - Buscar/filtrar por nome ou número
+
+4. **Validações:**
+   - Número de WhatsApp não pode ser duplicado
+   - Número deve ter formato válido (pelo menos 10 dígitos)
+   - Campos obrigatórios não podem ser salvos em branco
+
+---
+
+## Funcionalidade 2: Vinculação de WhatsApp com Processos
+
+### Requisitos
+1. **Nova página/tela** chamada "Notificações de Processos" ou "Vinculação WhatsApp-Processo"
+
+2. **Interface com dois componentes:**
+   
+   **Componente A - Tabela de Processos:**
+   - Listar todos os processos cadastrados
+   - Mostrar colunas: Número do processo, Cliente, Status
+   - Permitir seleção de um processo (clique para expandir ou modal)
+
+   **Componente B - Seleção de Contatos WhatsApp:**
+   - Quando um processo é selecionado, exibir uma lista de checkboxes
+   - Cada checkbox representa um número WhatsApp cadastrado
+   - Mostrar nome do contato + número de WhatsApp
+   - Permitir selecionar múltiplos contatos
+   - Botão para salvar a vinculação
+
+3. **Funcionalidades:**
+   - Vincular um ou mais números WhatsApp a um processo
+   - Desvincular números WhatsApp de um processo
+   - Visualizar quais números estão vinculados a cada processo
+   - Atualizar vinculações existentes
+   - Listar todos os processos e seus contatos associados
+
+4. **Interface adicional (opcional mas recomendado):**
+   - Vista de tabela mostrando: Processo | Contatos Vinculados | Ações
+   - Permitir edição rápida (remover contato individual sem sair da tela)
+
+---
+
+## Requisitos Técnicos Gerais
+
+### Frontend
+- Manter consistência visual com o design já existente no MVP
+- Usar o mesmo framework/biblioteca já utilizado (React, Vue, etc.)
+- Responsivo (funcionar bem em desktop e mobile)
+
+### Backend (se aplicável)
+- Criar endpoints/rotas para:
+  - CRUD de contatos WhatsApp
+  - CRUD de vinculações entre processos e WhatsApp
+  - Listar contatos vinculados a um processo específico
+
+---
+
+## Fluxo Esperado do Usuário
+
+1. **Usuário cria contatos WhatsApp** na tela "Contatos WhatsApp"
+2. **Usuário acessa tela de vinculação**
+3. **Seleciona um processo** da lista
+4. **Marca os contatos WhatsApp** que devem receber notificações sobre aquele processo
+5. **Salva a vinculação**
+6. **Pode visualizar, editar ou remover vinculações** a qualquer momento
+
+---
+
+## Observações Importantes
+
+- Considerar implementação futura de envio real de mensagens WhatsApp (usando API como Twilio, WhatsApp Business API, etc.) - por enquanto, apenas guardar as vinculações
+- Manter logs/auditoria de criação e modificação de contatos
+- Testar validações de número de WhatsApp com diferentes formatos
+- Garantir que deletar um contato WhatsApp trate as vinculações existentes (deletar em cascata ou desabilitar)

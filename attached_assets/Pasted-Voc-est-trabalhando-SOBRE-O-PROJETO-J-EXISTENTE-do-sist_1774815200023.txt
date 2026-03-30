@@ -1,0 +1,293 @@
+Você está trabalhando SOBRE O PROJETO JÁ EXISTENTE do sistema VIGORA. Quero que implemente as alterações abaixo diretamente no app atual, mantendo o design system, os padrões visuais e a arquitetura já existentes.
+
+IMPORTANTE
+- Não responder apenas com explicação.
+- Implementar as alterações reais no projeto.
+- Reaproveitar os componentes, estilos, layout, sidebar, cards, tabelas e modais já existentes.
+- Garantir responsividade.
+- Onde houver botão de criação, ele deve abrir formulário/modal funcional.
+- Onde eu pedir item clicável, deve abrir página de detalhes, drawer ou modal detalhado.
+
+==================================================
+1. DASHBOARD
+==================================================
+
+AJUSTE:
+- Mover a seção “Compromissos” para uma posição mais alta no dashboard.
+- Ela deve aparecer antes das listas secundárias, em uma área de destaque.
+- Quero que os compromissos fiquem mais visíveis no painel principal.
+
+ESTRUTURA SUGERIDA:
+- Cards principais no topo
+- Compromissos logo abaixo
+- Depois alertas, atividades, prazos, etc.
+
+==================================================
+2. TAREFAS
+==================================================
+
+IMPLEMENTAR:
+- Adicionar foto/avatar de quem é o responsável ou responsáveis pela tarefa
+- Mostrar avatar único ou grupo de avatares quando houver mais de um responsável
+- Cada tarefa deve ficar clicável
+- Ao clicar na tarefa, abrir uma visualização detalhada da tarefa
+
+DETALHE DA TAREFA DEVE MOSTRAR:
+- nome da tarefa
+- descrição
+- processo vinculado
+- responsáveis
+- prazo
+- status
+- prioridade
+- observações
+- histórico básico, se existir
+- opção de editar
+
+==================================================
+3. CLIENTES
+==================================================
+
+IMPLEMENTAR:
+- Tornar clientes clicáveis
+- Ao clicar, abrir página ou painel com os detalhes do cliente
+
+ADICIONAR NO BOTÃO "+ ADICIONAR CLIENTE":
+Criar formulário mais completo com campos para cadastro completo de cliente
+
+CAMPOS:
+- nome
+- tipo de pessoa (PF / PJ)
+- CPF/CNPJ
+- RG (apenas PF)
+- data de nascimento (PF)
+- estado civil (PF)
+- profissão (PF)
+- sexo (PF)
+- nacionalidade (PF)
+- email
+- telefone
+- WhatsApp
+- CEP
+- país
+- estado
+- cidade
+- endereço completo
+- origem do contato
+- observações gerais
+
+SE FOR PJ:
+- esconder os campos exclusivos de PF
+- manter os dados compatíveis com pessoa jurídica
+
+NA TELA DE DETALHE DO CLIENTE:
+- dados principais
+- processos vinculados
+- tarefas vinculadas
+- prazos vinculados
+- observações
+
+==================================================
+4. MENU LATERAL
+==================================================
+
+IMPLEMENTAR:
+- Criar uma configuração onde o usuário possa escolher o que deseja exibir no menu lateral
+
+FUNCIONALIDADE:
+- página ou seção em Configurações chamada “Personalização do menu”
+- lista dos itens do menu com toggle on/off
+- permitir esconder ou mostrar módulos
+- salvar a preferência do usuário
+- refletir imediatamente no menu lateral
+
+EXEMPLO:
+- Dashboard
+- Processos
+- Prazos
+- Tarefas
+- Clientes
+- Agenda
+- Intimações
+- Financeiro
+- Parceiros
+- Modelos
+- Relatórios
+- Configurações
+
+==================================================
+5. PROCESSOS
+==================================================
+
+IMPLEMENTAR:
+- Tornar o botão “+ Novo processo” mais completo
+- O formulário de cadastro de processo deve ter mais campos
+
+CAMPOS SUGERIDOS:
+- número do processo
+- nome interno ou apelido do processo
+- cliente vinculado
+- parte contrária
+- tribunal
+- comarca
+- vara
+- área jurídica
+- fase do processo
+- tipo de ação
+- grupo de ação
+- responsável principal
+- responsáveis adicionais
+- parceiro vinculado
+- valor da causa
+- data de distribuição
+- status
+- processo favorito (sim/não)
+- observações
+
+NA LISTAGEM:
+- manter busca e filtros
+- manter favoritos
+- mostrar status e próximos prazos
+
+==================================================
+6. RELATÓRIOS
+==================================================
+
+AJUSTAR:
+- revisar a página de relatórios para mostrar informações mais úteis
+- remover a seção “Desempenho por Membro”
+
+QUERO RELATÓRIOS MAIS INTELIGENTES, COMO:
+- tarefas concluídas em dia
+- tarefas concluídas em atraso
+- tarefas pendentes
+- prazos vencidos por período
+- prazos cumpridos por período
+- novos clientes por período
+- novos processos por período
+- processos ativos por área
+- processos por status
+- setores com mais volume
+- média de atraso em tarefas
+- colaboradores com mais tarefas atrasadas
+
+ADICIONAR:
+- filtros por período
+- filtros por responsável
+- filtros por área
+- opção de exportar
+
+==================================================
+7. PRAZOS
+==================================================
+
+IMPLEMENTAR:
+- O botão “+ Adicionar prazo” deve abrir modal ou formulário funcional
+- Esse formulário precisa ter um campo para selecionar processos já cadastrados
+- Adicionar botão de filtro para exibir somente processos favoritos
+
+FORMULÁRIO DE PRAZO:
+- processo vinculado (select buscando processos cadastrados)
+- tipo do prazo
+- descrição
+- responsável
+- prioridade
+- data limite
+- hora
+- status
+- observações
+
+NA TELA DE PRAZOS:
+- adicionar filtro “Somente favoritos”
+- esse filtro deve puxar processos marcados com estrela
+- manter também os filtros por status, período e responsável
+
+==================================================
+8. TELAS APÓS LOGIN / ONBOARDING
+==================================================
+
+IMPORTANTE:
+Implementar ou ajustar o fluxo de onboarding após login com base nas referências visuais enviadas.
+
+Quero um fluxo em etapas com barra de progresso no topo.
+
+ETAPAS:
+1. Criar conta
+2. Buscar processos
+3. Confirmar informações
+4. Convidar usuário
+
+A interface deve seguir o estilo das referências:
+- fundo claro
+- card central
+- stepper no topo
+- textos objetivos
+- botões claros
+- experiência elegante e limpa
+
+------------------------------------------
+ETAPA 2 — BUSCAR PROCESSOS
+------------------------------------------
+
+Criar duas opções de entrada de processos:
+
+OPÇÃO A — BUSCAR PELA OAB
+Tela com:
+- título explicando que é possível buscar processos automaticamente
+- campo “Nº da inscrição OAB”
+- campo “Seccional UF”
+- botão “Buscar processos”
+- opção “Prefiro configurar manualmente”
+- bloco lateral explicando por que informar a OAB
+- texto de segurança informando que os dados são protegidos
+
+OPÇÃO B — ADICIONAR PROCESSOS PELO CNJ
+Tela com:
+- título explicando que é possível adicionar processos pelo CNJ
+- campo “Número do processo CNJ”
+- botão de validar/adicionar número
+- botão “Buscar processos”
+- opção “Pular etapa”
+
+------------------------------------------
+TELA DE PULAR ETAPA / SEM PROCESSOS
+------------------------------------------
+
+Criar também a tela de fallback semelhante à referência:
+
+Texto principal:
+- algo no estilo “Sem problemas! Você pode adicionar seus processos em outro momento”
+
+Botões:
+- botão principal para entrar no sistema
+- botão secundário para buscar processos pela OAB
+
+OBJETIVO:
+Essas telas devem servir como onboarding inicial após login ou criação de conta.
+
+==================================================
+9. EXPERIÊNCIA GERAL
+==================================================
+
+PADRÕES IMPORTANTES:
+- tudo deve manter consistência visual com o VIGORA
+- usar botões, inputs, cards e tabelas no padrão atual
+- deixar as ações realmente funcionais
+- melhorar a clareza da navegação
+- garantir boa experiência desktop e mobile
+
+==================================================
+10. ENTREGA ESPERADA
+==================================================
+
+Ao final, o sistema deve ter:
+
+- compromissos mais visíveis no dashboard
+- tarefas com avatar dos responsáveis e detalhe clicável
+- clientes clicáveis com cadastro completo
+- menu lateral personalizável
+- formulário de novo processo mais robusto
+- relatórios mais úteis e sem “Desempenho por Membro”
+- botão de adicionar prazo funcional com seleção de processo
+- filtro de favoritos em prazos
+- onboarding pós-login com telas de busca por OAB, CNJ e fallback

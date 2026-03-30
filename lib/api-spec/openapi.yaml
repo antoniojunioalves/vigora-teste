@@ -1,0 +1,1358 @@
+openapi: 3.1.0
+info:
+  title: Api
+  version: 0.1.0
+  description: VIGORA - Plataforma de Gestão Jurídica
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: auth
+    description: Authentication operations
+  - name: clientes
+    description: Clients management
+  - name: processos
+    description: Legal processes management
+  - name: prazos
+    description: Deadlines management
+  - name: tarefas
+    description: Tasks management
+  - name: alertas
+    description: Alerts management
+  - name: contatos-whatsapp
+    description: WhatsApp contacts management
+  - name: notificacoes-processos
+    description: Process WhatsApp notification links
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /auth/login:
+    post:
+      operationId: login
+      tags: [auth]
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        "200":
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "401":
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/register:
+    post:
+      operationId: register
+      tags: [auth]
+      summary: Register new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+      responses:
+        "201":
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "400":
+          description: Email already exists
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/me:
+    get:
+      operationId: getMe
+      tags: [auth]
+      summary: Get current user
+      responses:
+        "200":
+          description: Current user data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "401":
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /clientes:
+    get:
+      operationId: listClientes
+      tags: [clientes]
+      summary: List clients
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of clients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Cliente"
+    post:
+      operationId: createCliente
+      tags: [clientes]
+      summary: Create client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateClienteRequest"
+      responses:
+        "201":
+          description: Client created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cliente"
+
+  /clientes/{id}:
+    get:
+      operationId: getCliente
+      tags: [clientes]
+      summary: Get client by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Client data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ClienteWithRelations"
+        "404":
+          description: Client not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      operationId: updateCliente
+      tags: [clientes]
+      summary: Update client
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateClienteRequest"
+      responses:
+        "200":
+          description: Client updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cliente"
+    delete:
+      operationId: deleteCliente
+      tags: [clientes]
+      summary: Delete client
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Client deleted
+
+  /processos:
+    get:
+      operationId: listProcessos
+      tags: [processos]
+      summary: List processes
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: area
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of processes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProcessoWithDetails"
+    post:
+      operationId: createProcesso
+      tags: [processos]
+      summary: Create process
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProcessoRequest"
+      responses:
+        "201":
+          description: Process created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Processo"
+
+  /processos/{id}:
+    get:
+      operationId: getProcesso
+      tags: [processos]
+      summary: Get process by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Process data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProcessoWithDetails"
+        "404":
+          description: Process not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      operationId: updateProcesso
+      tags: [processos]
+      summary: Update process
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProcessoRequest"
+      responses:
+        "200":
+          description: Process updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Processo"
+    delete:
+      operationId: deleteProcesso
+      tags: [processos]
+      summary: Delete process
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Process deleted
+
+  /prazos:
+    get:
+      operationId: listPrazos
+      tags: [prazos]
+      summary: List deadlines
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: processoId
+          in: query
+          schema:
+            type: integer
+        - name: responsavel
+          in: query
+          schema:
+            type: string
+        - name: periodo
+          in: query
+          schema:
+            type: string
+            enum: [hoje, proximos3, proximos7, vencidos, todos]
+      responses:
+        "200":
+          description: List of deadlines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PrazoWithDetails"
+    post:
+      operationId: createPrazo
+      tags: [prazos]
+      summary: Create deadline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePrazoRequest"
+      responses:
+        "201":
+          description: Deadline created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Prazo"
+
+  /prazos/{id}:
+    get:
+      operationId: getPrazo
+      tags: [prazos]
+      summary: Get deadline by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deadline data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrazoWithDetails"
+        "404":
+          description: Deadline not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      operationId: updatePrazo
+      tags: [prazos]
+      summary: Update deadline
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePrazoRequest"
+      responses:
+        "200":
+          description: Deadline updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Prazo"
+    delete:
+      operationId: deletePrazo
+      tags: [prazos]
+      summary: Delete deadline
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deadline deleted
+
+  /tarefas:
+    get:
+      operationId: listTarefas
+      tags: [tarefas]
+      summary: List tasks
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: processoId
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TarefaWithDetails"
+    post:
+      operationId: createTarefa
+      tags: [tarefas]
+      summary: Create task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTarefaRequest"
+      responses:
+        "201":
+          description: Task created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tarefa"
+
+  /tarefas/{id}:
+    get:
+      operationId: getTarefa
+      tags: [tarefas]
+      summary: Get task by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Task data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TarefaWithDetails"
+        "404":
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      operationId: updateTarefa
+      tags: [tarefas]
+      summary: Update task
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTarefaRequest"
+      responses:
+        "200":
+          description: Task updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Tarefa"
+    delete:
+      operationId: deleteTarefa
+      tags: [tarefas]
+      summary: Delete task
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Task deleted
+
+  /alertas:
+    get:
+      operationId: listAlertas
+      tags: [alertas]
+      summary: List alerts
+      parameters:
+        - name: lido
+          in: query
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: List of alerts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Alerta"
+
+  /alertas/{id}/lido:
+    put:
+      operationId: marcarAlertaLido
+      tags: [alertas]
+      summary: Mark alert as read
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Alert marked as read
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Alerta"
+
+  /alertas/marcar-todos-lidos:
+    put:
+      operationId: marcarTodosAlertasLidos
+      tags: [alertas]
+      summary: Mark all alerts as read
+      responses:
+        "200":
+          description: All alerts marked as read
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+
+  /dashboard/stats:
+    get:
+      operationId: getDashboardStats
+      tags: [health]
+      summary: Get dashboard statistics
+      responses:
+        "200":
+          description: Dashboard statistics
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardStats"
+
+  /contatos-whatsapp:
+    get:
+      operationId: listContatosWhatsapp
+      tags: [contatos-whatsapp]
+      summary: List WhatsApp contacts
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ContatoWhatsapp"
+    post:
+      operationId: createContatoWhatsapp
+      tags: [contatos-whatsapp]
+      summary: Create WhatsApp contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateContatoWhatsappRequest"
+      responses:
+        "201":
+          description: Contact created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContatoWhatsapp"
+        "409":
+          description: Duplicate number
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /contatos-whatsapp/{id}:
+    get:
+      operationId: getContatoWhatsapp
+      tags: [contatos-whatsapp]
+      summary: Get contact by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Contact data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContatoWhatsapp"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    put:
+      operationId: updateContatoWhatsapp
+      tags: [contatos-whatsapp]
+      summary: Update WhatsApp contact
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateContatoWhatsappRequest"
+      responses:
+        "200":
+          description: Contact updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContatoWhatsapp"
+    delete:
+      operationId: deleteContatoWhatsapp
+      tags: [contatos-whatsapp]
+      summary: Delete WhatsApp contact
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Contact deleted
+
+  /notificacoes-processos:
+    get:
+      operationId: listNotificacoesProcessos
+      tags: [notificacoes-processos]
+      summary: List processes with WhatsApp contact counts
+      responses:
+        "200":
+          description: List of processes with contact info
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProcessoComContatos"
+
+  /notificacoes-processos/{processoId}/contatos:
+    get:
+      operationId: listContatosDoProcesso
+      tags: [notificacoes-processos]
+      summary: List WhatsApp contacts linked to a process
+      parameters:
+        - name: processoId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: List of linked contacts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ContatoWhatsapp"
+    post:
+      operationId: salvarVinculosProcesso
+      tags: [notificacoes-processos]
+      summary: Set (sync) WhatsApp contacts linked to a process
+      parameters:
+        - name: processoId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SalvarVinculosRequest"
+      responses:
+        "200":
+          description: Links saved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VinculoSaveResult"
+
+  /notificacoes-processos/{processoId}/contatos/{contatoId}:
+    delete:
+      operationId: removerContatoDoProcesso
+      tags: [notificacoes-processos]
+      summary: Remove a WhatsApp contact link from a process
+      parameters:
+        - name: processoId
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: contatoId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Link removed
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+
+    LoginRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        senha:
+          type: string
+      required:
+        - email
+        - senha
+
+    RegisterRequest:
+      type: object
+      properties:
+        nome:
+          type: string
+        email:
+          type: string
+          format: email
+        telefone:
+          type: string
+        senha:
+          type: string
+      required:
+        - nome
+        - email
+        - senha
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        email:
+          type: string
+        telefone:
+          type: string
+          nullable: true
+        criadoEm:
+          type: string
+          format: date-time
+      required:
+        - id
+        - nome
+        - email
+        - criadoEm
+
+    AuthResponse:
+      type: object
+      properties:
+        user:
+          $ref: "#/components/schemas/User"
+        token:
+          type: string
+      required:
+        - user
+        - token
+
+    Cliente:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        cpfCnpj:
+          type: string
+          nullable: true
+        telefone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        observacoes:
+          type: string
+          nullable: true
+        criadoEm:
+          type: string
+          format: date-time
+      required:
+        - id
+        - nome
+        - criadoEm
+
+    ClienteWithRelations:
+      allOf:
+        - $ref: "#/components/schemas/Cliente"
+        - type: object
+          properties:
+            processos:
+              type: array
+              items:
+                $ref: "#/components/schemas/ProcessoSummary"
+            prazos:
+              type: array
+              items:
+                $ref: "#/components/schemas/PrazoSummary"
+          required:
+            - processos
+            - prazos
+
+    CreateClienteRequest:
+      type: object
+      properties:
+        nome:
+          type: string
+        cpfCnpj:
+          type: string
+          nullable: true
+        telefone:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        observacoes:
+          type: string
+          nullable: true
+      required:
+        - nome
+
+    Processo:
+      type: object
+      properties:
+        id:
+          type: integer
+        numeroProcesso:
+          type: string
+        tribunal:
+          type: string
+          nullable: true
+        area:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [ativo, atencao, prazo_vencido, concluido, arquivado]
+        observacoes:
+          type: string
+          nullable: true
+        clienteId:
+          type: integer
+          nullable: true
+        responsavelId:
+          type: integer
+          nullable: true
+        criadoEm:
+          type: string
+          format: date-time
+      required:
+        - id
+        - numeroProcesso
+        - status
+        - criadoEm
+
+    ProcessoSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        numeroProcesso:
+          type: string
+        area:
+          type: string
+          nullable: true
+        status:
+          type: string
+      required:
+        - id
+        - numeroProcesso
+        - status
+
+    ProcessoWithDetails:
+      allOf:
+        - $ref: "#/components/schemas/Processo"
+        - type: object
+          properties:
+            cliente:
+              $ref: "#/components/schemas/Cliente"
+              nullable: true
+            proximoPrazo:
+              $ref: "#/components/schemas/PrazoSummary"
+              nullable: true
+            prazos:
+              type: array
+              items:
+                $ref: "#/components/schemas/Prazo"
+            tarefas:
+              type: array
+              items:
+                $ref: "#/components/schemas/Tarefa"
+          required:
+            - prazos
+            - tarefas
+
+    CreateProcessoRequest:
+      type: object
+      properties:
+        numeroProcesso:
+          type: string
+        tribunal:
+          type: string
+          nullable: true
+        area:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [ativo, atencao, prazo_vencido, concluido, arquivado]
+        observacoes:
+          type: string
+          nullable: true
+        clienteId:
+          type: integer
+          nullable: true
+        responsavelId:
+          type: integer
+          nullable: true
+      required:
+        - numeroProcesso
+        - status
+
+    Prazo:
+      type: object
+      properties:
+        id:
+          type: integer
+        processoId:
+          type: integer
+          nullable: true
+        tipo:
+          type: string
+          enum: [peticao, audiencia, recurso, apelacao, agravo, embargos, contestacao, cumprimento_exigencia, diligencia, outro]
+        descricao:
+          type: string
+          nullable: true
+        dataLimite:
+          type: string
+          format: date
+        responsavel:
+          type: string
+          nullable: true
+        prioridade:
+          type: string
+          enum: [alta, media, baixa]
+        status:
+          type: string
+          enum: [ok, atencao, urgente, vencido, concluido]
+        criadoEm:
+          type: string
+          format: date-time
+      required:
+        - id
+        - tipo
+        - dataLimite
+        - prioridade
+        - status
+        - criadoEm
+
+    PrazoSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        tipo:
+          type: string
+        dataLimite:
+          type: string
+          format: date
+        status:
+          type: string
+        prioridade:
+          type: string
+      required:
+        - id
+        - tipo
+        - dataLimite
+        - status
+        - prioridade
+
+    PrazoWithDetails:
+      allOf:
+        - $ref: "#/components/schemas/Prazo"
+        - type: object
+          properties:
+            processo:
+              $ref: "#/components/schemas/ProcessoSummary"
+              nullable: true
+
+    CreatePrazoRequest:
+      type: object
+      properties:
+        processoId:
+          type: integer
+          nullable: true
+        tipo:
+          type: string
+          enum: [peticao, audiencia, recurso, apelacao, agravo, embargos, contestacao, cumprimento_exigencia, diligencia, outro]
+        descricao:
+          type: string
+          nullable: true
+        dataLimite:
+          type: string
+          format: date
+        responsavel:
+          type: string
+          nullable: true
+        prioridade:
+          type: string
+          enum: [alta, media, baixa]
+        status:
+          type: string
+          enum: [ok, atencao, urgente, vencido, concluido]
+      required:
+        - tipo
+        - dataLimite
+        - prioridade
+        - status
+
+    Tarefa:
+      type: object
+      properties:
+        id:
+          type: integer
+        titulo:
+          type: string
+        descricao:
+          type: string
+          nullable: true
+        processoId:
+          type: integer
+          nullable: true
+        prazoId:
+          type: integer
+          nullable: true
+        responsavel:
+          type: string
+          nullable: true
+        dataLimite:
+          type: string
+          format: date
+          nullable: true
+        status:
+          type: string
+          enum: [pendente, em_andamento, concluida, atrasada]
+        criadoEm:
+          type: string
+          format: date-time
+      required:
+        - id
+        - titulo
+        - status
+        - criadoEm
+
+    TarefaWithDetails:
+      allOf:
+        - $ref: "#/components/schemas/Tarefa"
+        - type: object
+          properties:
+            processo:
+              $ref: "#/components/schemas/ProcessoSummary"
+              nullable: true
+
+    CreateTarefaRequest:
+      type: object
+      properties:
+        titulo:
+          type: string
+        descricao:
+          type: string
+          nullable: true
+        processoId:
+          type: integer
+          nullable: true
+        prazoId:
+          type: integer
+          nullable: true
+        responsavel:
+          type: string
+          nullable: true
+        dataLimite:
+          type: string
+          format: date
+          nullable: true
+        status:
+          type: string
+          enum: [pendente, em_andamento, concluida, atrasada]
+      required:
+        - titulo
+        - status
+
+    Alerta:
+      type: object
+      properties:
+        id:
+          type: integer
+        tipo:
+          type: string
+          enum: [prazo_vencido, prazo_urgente, prazo_criado, tarefa_atrasada, tarefa_concluida, processo_atencao]
+        mensagem:
+          type: string
+        referenciaId:
+          type: integer
+          nullable: true
+        referenciaTipo:
+          type: string
+          nullable: true
+        lido:
+          type: boolean
+        criadoEm:
+          type: string
+          format: date-time
+      required:
+        - id
+        - tipo
+        - mensagem
+        - lido
+        - criadoEm
+
+    DashboardStats:
+      type: object
+      properties:
+        processosAtivos:
+          type: integer
+        prazosSemana:
+          type: integer
+        prazosHoje:
+          type: integer
+        prazosVencidos:
+          type: integer
+        taxaCumprimento:
+          type: number
+        alertasCriticos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Alerta"
+        proximosPrazos:
+          type: array
+          items:
+            $ref: "#/components/schemas/PrazoWithDetails"
+        processosAtencao:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProcessoWithDetails"
+      required:
+        - processosAtivos
+        - prazosSemana
+        - prazosHoje
+        - prazosVencidos
+        - taxaCumprimento
+        - alertasCriticos
+        - proximosPrazos
+        - processosAtencao
+
+    ContatoWhatsapp:
+      type: object
+      properties:
+        id:
+          type: integer
+        nome:
+          type: string
+        numeroWhatsapp:
+          type: string
+        email:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [ativo, inativo]
+        observacoes:
+          type: string
+          nullable: true
+        usuarioId:
+          type: integer
+          nullable: true
+        criadoEm:
+          type: string
+          format: date-time
+        atualizadoEm:
+          type: string
+          format: date-time
+      required:
+        - id
+        - nome
+        - numeroWhatsapp
+        - status
+        - criadoEm
+        - atualizadoEm
+
+    CreateContatoWhatsappRequest:
+      type: object
+      properties:
+        nome:
+          type: string
+        numeroWhatsapp:
+          type: string
+        email:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [ativo, inativo]
+        observacoes:
+          type: string
+          nullable: true
+      required:
+        - nome
+        - numeroWhatsapp
+
+    ProcessoComContatos:
+      allOf:
+        - $ref: "#/components/schemas/Processo"
+        - type: object
+          properties:
+            cliente:
+              $ref: "#/components/schemas/Cliente"
+              nullable: true
+            contatos:
+              type: array
+              items:
+                $ref: "#/components/schemas/ContatoWhatsapp"
+            totalContatos:
+              type: integer
+          required:
+            - contatos
+            - totalContatos
+
+    SalvarVinculosRequest:
+      type: object
+      properties:
+        contatoIds:
+          type: array
+          items:
+            type: integer
+      required:
+        - contatoIds
+
+    VinculoSaveResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        added:
+          type: integer
+        removed:
+          type: integer
+      required:
+        - success
+        - added
+        - removed

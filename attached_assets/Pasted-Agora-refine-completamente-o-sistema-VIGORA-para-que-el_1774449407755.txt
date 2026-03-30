@@ -1,0 +1,229 @@
+Agora refine completamente o sistema VIGORA para que ele deixe de parecer um protótipo simples e passe a ter aparência e comportamento de um SaaS real em produção.
+
+OBJETIVO
+Quero elevar o nível de UX, UI, acabamento visual e profundidade de interface, mantendo o foco do produto em:
+- controle de prazos
+- redução de risco jurídico
+- leitura rápida
+- confiança operacional
+
+DIREÇÃO GERAL
+- Interface mais profissional e detalhada
+- Mais estados visuais
+- Mais densidade útil
+- Mais microinterações
+- Mais clareza de prioridade
+- Sensação real de produto vivo
+
+FOCO PRINCIPAL
+O sistema deve parecer um radar de risco jurídico.
+O usuário deve entender imediatamente:
+- o que venceu
+- o que vence hoje
+- o que é urgente
+- o que exige ação
+- o que está sob controle
+
+REFINAR O DASHBOARD
+Melhore o dashboard drasticamente.
+
+1. HIERARQUIA VISUAL
+Crie 3 camadas visuais muito claras:
+- CRÍTICO
+- ATENÇÃO
+- OK
+
+2. CARDS PRINCIPAIS
+Melhorar o design e a qualidade da informação nos cards:
+- Processos ativos
+- Prazos da semana
+- Vencem hoje
+- Prazos vencidos
+- Taxa de cumprimento
+
+Adicionar:
+- ícones discretos
+- micro indicadores de tendência
+- comparação mockada com período anterior
+- texto de apoio curto
+
+3. BLOCO DE ALERTAS CRÍTICOS
+Criar uma seção visualmente forte para alertas críticos.
+
+Cada item deve ter:
+- ícone
+- título
+- processo relacionado
+- data
+- status
+- ação rápida “Ver processo”
+
+4. LISTA DE PRÓXIMOS PRAZOS
+Organizar visualmente por grupos:
+- hoje
+- próximos 3 dias
+- próximos 7 dias
+- vencidos
+
+5. ATIVIDADES RECENTES
+Adicionar feed com ações como:
+- prazo criado
+- tarefa concluída
+- novo cliente adicionado
+- processo atualizado
+
+TABELAS
+Refinar todas as tabelas para padrão profissional.
+
+Adicionar:
+- cabeçalho fixo quando fizer sentido
+- hover suave
+- ordenação por coluna
+- busca instantânea
+- paginação
+- filtros mais elegantes
+- colunas com espaçamento consistente
+
+As tabelas devem destacar:
+- status com badge
+- prioridade com cor
+- datas em formato relativo, como “em 2 dias” ou “vencido ontem”
+
+STATUS
+Padronizar o sistema visual de status.
+
+Para prazos:
+- vencido
+- urgente
+- atenção
+- concluído
+- ok
+
+Para tarefas:
+- pendente
+- em andamento
+- concluída
+- atrasada
+
+Para processos:
+- ativo
+- atenção
+- prazo vencido
+- concluído
+- arquivado
+
+Crie badges consistentes, elegantes e com leitura rápida.
+
+MODAIS DE CRIAÇÃO
+Refine os fluxos de criação:
+- novo processo
+- novo prazo
+- nova tarefa
+- novo cliente
+
+Cada modal deve ter:
+- layout bem organizado
+- labels claras
+- validação visual
+- mensagens de erro
+- botão primário destacado
+- botão cancelar discreto
+
+Ao salvar:
+- mostrar toast elegante
+- atualizar a UI automaticamente
+- manter sensação de sistema fluido
+
+EMPTY STATES
+Melhore todos os empty states.
+
+Adicionar:
+- ilustrações simples ou ícones
+- textos mais humanos
+- CTA direto
+
+Exemplos:
+- “Nenhum processo cadastrado ainda”
+- “Você ainda não possui prazos críticos”
+- “Tudo sob controle por aqui”
+- “Cadastre seu primeiro prazo para começar”
+
+LOADING STATES
+Adicionar skeleton loaders em:
+- dashboard
+- cards
+- tabelas
+- blocos principais
+
+Nada de carregamento seco ou brusco.
+
+DETALHE DO PROCESSO
+Transforme a página de detalhe do processo em uma das páginas mais importantes do sistema.
+
+No topo:
+- número do processo
+- cliente
+- status
+- tribunal
+- área
+- próximo prazo em destaque
+
+Abaixo:
+- visão geral
+- prazos vinculados
+- tarefas vinculadas
+- cliente vinculado
+- observações
+
+Adicionar ações rápidas:
+- Novo prazo
+- Nova tarefa
+- Editar processo
+
+CENTRAL DE ALERTAS
+Refinar a página de alertas para parecer uma central de risco real.
+
+Adicionar:
+- filtros por tipo
+- filtros por lido/não lido
+- marcar como lido
+- ações rápidas
+- agrupamento visual por severidade
+
+NAVEGAÇÃO
+Refinar sidebar/topbar.
+
+Melhorar:
+- ícones
+- destaque do item ativo
+- avatar do usuário
+- botão Nova ação
+- indicador de notificações
+
+RESPONSIVIDADE
+Melhorar bastante a experiência mobile:
+- cards empilhados com boa hierarquia
+- navegação adaptada
+- tabelas responsivas
+- ações rápidas acessíveis
+- modais confortáveis em telas menores
+
+MICROINTERAÇÕES
+Adicionar:
+- hover em botões
+- transições suaves
+- animações leves
+- respostas visuais ao clique
+- destaque elegante para ações importantes
+
+PERCEPÇÃO FINAL
+Quero que o sistema passe a parecer:
+- confiável
+- premium
+- rápido
+- bem resolvido
+- pronto para venda
+
+Não quero aparência de protótipo.
+Quero aparência de SaaS jurídico premium já em operação.
+Continue usando dados mockados, mas torne tudo visualmente e estruturalmente muito mais forte.

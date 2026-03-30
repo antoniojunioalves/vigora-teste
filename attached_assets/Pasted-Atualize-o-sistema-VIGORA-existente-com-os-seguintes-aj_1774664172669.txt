@@ -1,0 +1,107 @@
+Atualize o sistema VIGORA existente com os seguintes ajustes visuais e melhorias de UX.
+
+==================================================
+1. AJUSTE DE CORES (IMPORTANTE)
+==================================================
+
+Padronizar todos os elementos azuis do sistema para usar gradiente da marca:
+
+- #2A34D4
+- #6670F0
+
+Aplicar gradiente em:
+- botões principais
+- destaques
+- ícones ativos
+- elementos de ação
+
+Garantir consistência visual em todo o sistema.
+
+==================================================
+2. CORREÇÃO DE LAYOUT (TELA DE PRAZOS)
+==================================================
+
+Corrigir o bug visual da tela "Controle de Prazos":
+
+- remover sobreposição de elementos
+- corrigir espaçamentos
+- ajustar largura dos containers
+- corrigir overflow e z-index
+- garantir que filtros/tabs não fiquem cortados
+
+==================================================
+3. FAVORITAR PROCESSOS
+==================================================
+
+Adicionar funcionalidade de favoritos:
+
+- adicionar ícone de estrela ⭐ nos módulos:
+  - processos
+  - tarefas
+  - intimações
+
+- permitir:
+  - marcar/desmarcar como favorito
+  - salvar estado
+  - destacar visualmente itens favoritos
+
+==================================================
+4. DARK MODE / LIGHT MODE (NO PAINEL)
+==================================================
+
+Adicionar botão de alternância de tema no painel principal:
+
+- botão visível no topo
+- alternar entre:
+  - claro
+  - escuro
+
+- manter persistência (localStorage)
+- atualizar UI em tempo real
+
+==================================================
+5. CAMPO DE COMPROMISSOS NO DASHBOARD
+==================================================
+
+Adicionar nova seção no painel principal:
+
+"Compromissos"
+
+Deve conter:
+- lista de compromissos
+- botão "Novo compromisso"
+- botões:
+  - atualizar
+  - filtrar
+  - ordenar
+
+Filtros:
+- tipo (tarefa, prazo, compromisso)
+- responsável
+- data
+
+==================================================
+6. ASSISTENTE VIRTUAL (IA)
+==================================================
+
+Adicionar um assistente virtual no sistema:
+
+- botão flutuante ou lateral
+- interface de chat simples
+
+Função:
+- responder dúvidas jurídicas
+- ajudar com organização
+
+Simulação:
+- pode ser mock (sem integração real ainda)
+- usar respostas pré-definidas ou placeholder
+
+==================================================
+RESULTADO ESPERADO
+==================================================
+
+- sistema mais moderno
+- visual consistente
+- dashboard mais útil
+- UX mais forte

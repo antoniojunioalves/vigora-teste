@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "VIGORA"
+version = "1.0.0"
+id = "artifacts/vigora"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22700
+
+[services.development]
+run = "pnpm --filter @workspace/vigora run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/vigora", "run", "build" ]
+publicDir = "artifacts/vigora/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22700"
+BASE_PATH = "/"

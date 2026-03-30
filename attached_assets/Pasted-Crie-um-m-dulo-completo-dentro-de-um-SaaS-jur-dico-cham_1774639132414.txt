@@ -1,0 +1,232 @@
+Crie um módulo completo dentro de um SaaS jurídico chamado “Equipe & Permissões”, com estrutura profissional, escalável e preparada para atender desde advogados autônomos até grandes escritórios.
+
+O sistema deve ser em português (Brasil) e seguir padrões modernos de UX/UI (clean, elegante, estilo SaaS premium com glassmorphism leve).
+
+-----------------------------------
+🎯 OBJETIVO DO MÓDULO
+-----------------------------------
+
+Permitir o controle total de usuários, equipes e níveis de acesso dentro do sistema, garantindo organização, responsabilidade e segurança jurídica.
+
+-----------------------------------
+👥 NÍVEIS DE ACESSO (ROLES)
+-----------------------------------
+
+Implemente os seguintes perfis:
+
+1. PRESIDENTE / DONO (Owner)
+- Acesso total ao sistema
+- Gerencia usuários e permissões
+- Acesso a todos os processos
+- Acesso a relatórios financeiros
+- Configurações gerais
+- Auditoria completa
+
+2. SÓCIO
+- Acesso a todos os processos
+- Pode atribuir tarefas
+- Pode gerenciar advogados
+- Visualiza relatórios
+- Não acessa configurações críticas (opcional)
+
+3. COORDENADOR / GERENTE
+- Gerencia equipe
+- Distribui processos
+- Cria e acompanha tarefas
+- Acompanha prazos
+- Visualiza performance da equipe
+
+4. ADVOGADO
+- Acessa processos atribuídos
+- Cria tarefas
+- Atualiza status
+- Anexa documentos
+- Marca prazos como concluídos
+
+5. ESTAGIÁRIO / ASSISTENTE
+- Visualiza processos atribuídos
+- Executa tarefas
+- Não pode excluir dados críticos
+- Sem acesso a relatórios estratégicos
+
+6. FINANCEIRO (opcional)
+- Acesso a faturamento
+- Acesso a honorários
+- Relatórios financeiros
+- Sem acesso técnico aos processos
+
+-----------------------------------
+🔐 SISTEMA DE PERMISSÕES
+-----------------------------------
+
+Implementar:
+
+1. RBAC (Role-Based Access Control)
+- Permissões baseadas no cargo
+
+2. ABAC (Attribute-Based Access Control)
+- Restrições adicionais:
+  - Usuário só vê processos atribuídos
+  - Usuário só edita tarefas dele
+  - Usuário só acessa equipe dele
+
+-----------------------------------
+📊 MATRIZ DE PERMISSÕES
+-----------------------------------
+
+Implementar controle granular para:
+
+- Criar usuário
+- Editar permissões
+- Ver todos processos
+- Ver processos atribuídos
+- Criar tarefas
+- Excluir processos
+- Ver relatórios
+- Gerenciar equipe
+
+Permitir configuração por role.
+
+-----------------------------------
+👥 TIMES / EQUIPES
+-----------------------------------
+
+Implementar:
+
+- Criação de equipes (ex: Trabalhista, Cível, Previdenciário)
+- Usuários vinculados a equipes
+- Permissões por equipe
+- Filtro de processos por equipe
+
+-----------------------------------
+🔁 RESPONSABILIDADE OPERACIONAL
+-----------------------------------
+
+Toda tarefa deve ter:
+
+- Responsável
+- Executor
+- Revisor
+
+Permitir:
+
+- Transferência de responsabilidade
+- Histórico de alterações
+
+-----------------------------------
+📜 AUDITORIA (LOG DE ATIVIDADE)
+-----------------------------------
+
+Registrar:
+
+- Quem fez a ação
+- Qual ação foi feita
+- Quando foi feita
+
+Exemplo:
+"João alterou prazo do processo X às 14:32"
+
+-----------------------------------
+🔔 ALERTAS INTELIGENTES
+-----------------------------------
+
+Exibir:
+
+- Tarefas atrasadas
+- Processos sem responsável
+- Prazos críticos do dia
+
+-----------------------------------
+🖥️ INTERFACE (TELA EQUIPE)
+-----------------------------------
+
+Criar uma interface moderna com:
+
+1. Lista de usuários:
+- Nome
+- Cargo
+- Equipe
+- Status (ativo/inativo)
+- Último acesso
+
+2. Ações:
+- Adicionar usuário
+- Editar usuário
+- Alterar função
+- Alterar permissões
+- Desativar usuário
+
+3. Modal de criação:
+Campos:
+- Nome
+- Email
+- Cargo (dropdown)
+- Equipe
+- Permissões extras (toggle)
+
+4. Aba de permissões:
+- Lista de permissões
+- Toggle por role
+- Customização avançada
+
+-----------------------------------
+🧱 ESTRUTURA DE BANCO (SUGESTÃO)
+-----------------------------------
+
+Criar tabelas:
+
+users:
+- id
+- nome
+- email
+- role
+- status
+
+roles:
+- id
+- nome
+- nivel_hierarquia
+
+permissions:
+- id
+- nome
+
+role_permissions:
+- role_id
+- permission_id
+
+teams:
+- id
+- nome
+
+user_teams:
+- user_id
+- team_id
+
+-----------------------------------
+⚙️ REGRAS IMPORTANTES
+-----------------------------------
+
+- O sistema deve funcionar para:
+  - 1 usuário (advogado solo)
+  - múltiplos usuários (grandes escritórios)
+
+- Deve ser possível customizar permissões por role
+
+- Interface deve ser intuitiva e escalável
+
+- Manter design moderno estilo SaaS premium:
+  - cards
+  - sombras suaves
+  - transparência leve (glassmorphism)
+
+-----------------------------------
+🚀 RESULTADO ESPERADO
+-----------------------------------
+
+Gerar:
+
+- Interface completa da sessão “Equipe & Permissões”
+- Estrutura funcional de roles e permissões
+- Sistema pronto para integração com processos e tarefas
+- Código organizado e escalável

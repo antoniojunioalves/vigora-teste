@@ -1,0 +1,115 @@
+Quero que você adicione ao sistema VIGORA um controle completo de tema (modo claro, modo escuro e automático), com interface visível e funcional.
+
+OBJETIVO
+Permitir que o usuário escolha entre:
+- Modo claro
+- Modo escuro
+- Automático (seguir o sistema operacional)
+
+IMPORTANTE
+Atualmente o sistema não possui um botão ou interface para isso. Quero que isso seja criado agora.
+
+--------------------------------------
+CRIAÇÃO DA INTERFACE (OBRIGATÓRIO)
+--------------------------------------
+
+Criar na página de Configurações uma nova seção chamada:
+
+“Aparência”
+
+Dentro dessa seção, adicionar um controle de seleção de tema com as opções:
+
+- Claro
+- Escuro
+- Automático
+
+Esse controle pode ser:
+- radio button
+ou
+- select elegante
+ou
+- botões segmentados
+
+Deve ficar visualmente bonito e alinhado ao design do sistema.
+
+--------------------------------------
+COMPORTAMENTO DO TEMA
+--------------------------------------
+
+Implementar lógica global de tema:
+
+1. Quando o usuário selecionar:
+- Claro → aplicar tema claro imediatamente
+- Escuro → aplicar tema escuro imediatamente
+- Automático → detectar o tema do sistema operacional
+
+2. Detectar automaticamente com:
+window.matchMedia('(prefers-color-scheme: dark)')
+
+3. A troca de tema deve acontecer:
+- em tempo real
+- sem recarregar a página
+
+--------------------------------------
+PERSISTÊNCIA
+--------------------------------------
+
+Salvar a escolha do tema em dois lugares:
+
+1. Localmente (localStorage)
+- para resposta rápida
+
+2. No banco (se já estiver integrado)
+- campo: theme_preference
+
+--------------------------------------
+IMPLEMENTAÇÃO VISUAL
+--------------------------------------
+
+Modo claro:
+- fundo claro (off-white)
+- textos escuros
+- aparência leve e limpa
+
+Modo escuro:
+- usar o Dark Blue como base
+- fundo escuro consistente
+- textos claros
+- cards com leve elevação
+- manter aparência premium
+
+--------------------------------------
+ARQUITETURA
+--------------------------------------
+
+Criar um sistema de tema global:
+
+- usar variáveis CSS ou sistema de classes (ex: .dark)
+- garantir que todas as páginas respeitem o tema
+- aplicar no root do app
+
+--------------------------------------
+SINCRONIZAÇÃO
+--------------------------------------
+
+Ao carregar o app:
+- verificar preferência salva
+- se não houver, usar “system”
+
+--------------------------------------
+UX FINAL
+--------------------------------------
+
+O usuário deve:
+- encontrar facilmente essa opção em Configurações
+- trocar de tema com 1 clique
+- perceber a mudança imediatamente
+- manter sua escolha ao voltar ao sistema
+
+--------------------------------------
+IMPORTANTE
+--------------------------------------
+
+Não apenas implemente a lógica.
+Crie a interface visível para o usuário escolher o tema.
+Hoje isso não existe e precisa ser adicionado.

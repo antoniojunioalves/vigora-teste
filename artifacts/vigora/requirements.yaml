@@ -1,0 +1,17 @@
+packages:
+  "framer-motion": "Page transitions and smooth interactions for premium feel"
+  "recharts": "Dashboard analytics charts and data visualization"
+  "date-fns": "Date formatting and manipulation for deadlines"
+  "react-hook-form": "Form state management"
+  "@hookform/resolvers": "Zod validation integration for forms"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility for merging tailwind classes without style conflicts"
+
+images:
+  - path: "artifacts/vigora/public/images/auth-bg.png"
+    description: "Abstract, elegant dark architectural background with subtle deep blue lighting, conveying stability, law, and institutional trust. Minimalist."
+    aspect_ratio: "16:9"
+
+notes:
+  - API endpoints follow the provided OpenAPI spec.
+  - JWT Authentication is implemented using a custom fetch interceptor to inject the token from localStorage into all requests.

@@ -1,0 +1,476 @@
+Quero criar um SaaS web responsivo chamado VIGORA, voltado para advogados e pequenos escritórios de advocacia.
+
+OBJETIVO DO PRODUTO
+O VIGORA não deve ser tratado como um software jurídico genérico. Ele deve ser construído como uma plataforma de segurança operacional para advogados, com foco principal em evitar perda de prazos, organizar processos e reduzir falhas humanas na rotina jurídica.
+
+PROMESSA CENTRAL
+“Nunca mais perca um prazo.”
+
+POSICIONAMENTO
+O produto deve transmitir:
+- segurança
+- clareza
+- controle
+- confiança
+- simplicidade operacional
+
+PÚBLICO-ALVO
+- advogados autônomos
+- pequenos escritórios
+- escritórios que hoje controlam prazos e processos de forma manual ou em sistemas caros e complexos
+- profissionais que precisam de algo simples, visual e confiável
+
+IDIOMA
+Todo o app deve estar em português do Brasil.
+
+ESTILO VISUAL
+Quero um visual moderno, elegante, clean, premium, com aparência de legaltech séria e tecnológica.
+Não quero visual poluído.
+Priorizar sensação de organização, autoridade e foco.
+
+DESIGN SYSTEM
+Use este design system como base visual e de UI:
+- Cor primária: Ultra Blue RGB(56,66,232)
+- Fundo escuro institucional: Dark Blue RGB(14,14,71)
+- Fundo claro: Cold Off-White RGB(240,244,247)
+- Texto de suporte: Dark Grey RGB(55,55,56)
+
+Tipografia:
+- Headings: Outfit
+- Corpo e interface: DM Sans
+
+Hierarquia visual:
+- Botões primários fortes e claros
+- Cards com bordas suaves
+- Inputs elegantes e modernos
+- Tabelas limpas e bem espaçadas
+- Badges de status visuais
+- Dashboard com leitura rápida
+
+BORDER RADIUS
+- badges pequenos: 6px
+- inputs: 12px
+- cards: 20px
+- seções maiores: 32px
+- tags pill quando fizer sentido
+
+DIREÇÃO DE UX
+O app deve ser extremamente fácil de usar.
+O usuário deve bater o olho e entender:
+- o que está vencido
+- o que vence hoje
+- o que vence em breve
+- o que exige ação urgente
+
+A experiência deve ser construída com foco em redução de ansiedade do advogado.
+A home do sistema deve parecer um “radar de risco jurídico”.
+
+ESTRUTURA DO MVP
+Quero criar a versão inicial com os seguintes módulos:
+
+1. DASHBOARD
+Tela principal com visão geral operacional.
+
+Elementos:
+- card “Processos ativos”
+- card “Prazos da semana”
+- card “Vencem hoje”
+- card “Prazos vencidos”
+- card “Taxa de cumprimento”
+- lista de alertas críticos
+- lista de próximos prazos
+- tabela resumida de processos
+
+Também deve haver um destaque visual para:
+- urgentes
+- vencidos
+- atenção
+- ok
+
+2. MÓDULO DE PROCESSOS
+Tela para cadastrar e visualizar processos.
+
+Campos do processo:
+- número do processo
+- tribunal
+- cliente vinculado
+- área jurídica
+- responsável
+- status
+- observações
+
+Status sugeridos:
+- ativo
+- atenção
+- prazo vencido
+- concluído
+- arquivado
+
+A listagem deve ter:
+- busca
+- filtros
+- status em badge
+- coluna de próximo prazo
+- botão de visualizar detalhes
+
+Na tela de detalhes do processo deve existir:
+- dados principais
+- cliente vinculado
+- histórico resumido
+- lista de prazos ligados ao processo
+- botão para adicionar novo prazo
+- botão para adicionar tarefa
+
+3. MÓDULO DE PRAZOS
+Esse é o core do produto.
+
+O sistema deve permitir cadastrar prazos de forma simples.
+
+Campos do prazo:
+- processo vinculado
+- tipo de prazo
+- descrição
+- data limite
+- responsável
+- prioridade
+- status
+
+Tipos de prazo:
+- petição
+- audiência
+- recurso
+- apelação
+- agravo
+- embargos
+- contestação
+- cumprimento de exigência
+- diligência
+- outro
+
+Prioridade:
+- alta
+- média
+- baixa
+
+Status:
+- ok
+- atenção
+- urgente
+- vencido
+- concluído
+
+Regras visuais automáticas:
+- vencido: vermelho suave
+- urgente: amarelo/laranja
+- atenção: azul de destaque
+- concluído: verde suave
+
+A tela deve mostrar:
+- visão em lista
+- filtros por status
+- filtros por responsável
+- filtros por período
+- agrupamento por hoje, próximos 3 dias, próximos 7 dias, vencidos
+
+4. MÓDULO DE TAREFAS
+Quero um módulo simples de tarefas operacionais, sem complexidade excessiva.
+
+Campos:
+- título
+- descrição
+- processo vinculado
+- prazo vinculado (opcional)
+- responsável
+- data limite
+- status
+
+Status:
+- pendente
+- em andamento
+- concluída
+- atrasada
+
+Essa tela deve ser simples e funcional.
+
+5. MÓDULO DE CLIENTES
+Cadastro simples de clientes.
+
+Campos:
+- nome
+- CPF ou CNPJ
+- telefone
+- e-mail
+- observações
+
+Na tela do cliente deve mostrar:
+- processos vinculados
+- prazos vinculados
+- histórico básico
+
+6. ALERTAS E CENTRAL DE RISCO
+Criar uma área visual de alertas importantes, com mensagens como:
+- “Prazo vencido”
+- “Prazo em 2 dias”
+- “Tarefa atrasada”
+- “Novo prazo cadastrado com sucesso”
+
+Essa central deve ficar visível no dashboard e também em uma página própria.
+
+UX DAS TELAS
+Quero as seguintes páginas:
+
+- Login
+- Cadastro
+- Recuperar senha
+- Dashboard
+- Processos
+- Detalhes do processo
+- Prazos
+- Clientes
+- Tarefas
+- Alertas
+- Configurações
+- Perfil do usuário
+
+LOGIN E CADASTRO
+A tela de autenticação deve ter visual premium, minimalista e profissional.
+No cadastro, pedir:
+- nome completo
+- e-mail
+- telefone
+- senha
+
+NAVEGAÇÃO
+Criar sidebar ou topbar moderna com:
+- Dashboard
+- Processos
+- Prazos
+- Tarefas
+- Clientes
+- Alertas
+- Configurações
+
+No topo, exibir:
+- botão “Nova ação”
+- avatar do usuário
+- notificações
+
+AÇÕES RÁPIDAS
+O botão “Nova ação” deve abrir opções:
+- Novo processo
+- Novo prazo
+- Nova tarefa
+- Novo cliente
+
+ESTRUTURA DE COMPONENTES
+Criar componentes reutilizáveis:
+- card de métrica
+- badge de status
+- tabela de listagem
+- filtros
+- modal de criação rápida
+- toast de sucesso/erro
+- alertas do sistema
+- empty states bem desenhados
+- skeleton loaders
+
+EMPTY STATES
+Quero telas vazias bem trabalhadas com mensagens como:
+- “Nenhum processo cadastrado ainda”
+- “Você ainda não possui prazos críticos”
+- “Tudo sob controle por aqui”
+- “Cadastre seu primeiro cliente para começar”
+
+TOM DE MICROCOPY
+A linguagem do sistema deve ser clara, humana e profissional.
+Evitar juridiquês excessivo nas mensagens da interface.
+Deve soar como uma ferramenta séria, útil e objetiva.
+
+Exemplos:
+- “Prazo registrado com sucesso”
+- “Este processo exige atenção”
+- “Nenhum vencimento crítico encontrado”
+- “Faltam 2 dias para este prazo”
+- “Organize sua rotina jurídica com mais segurança”
+
+DASHBOARD IDEAL
+Quero um dashboard muito forte visualmente, com foco em leitura rápida.
+
+Seções:
+1. Header de boas-vindas
+Exemplo:
+“Bom dia, Júnior”
+“Veja os riscos e prioridades do seu escritório hoje.”
+
+2. Cards principais
+- Processos ativos
+- Prazos da semana
+- Vencem hoje
+- Taxa de cumprimento
+
+3. Bloco de alertas críticos
+Lista destacada com cor e ícone
+
+4. Próximos prazos
+Tabela curta
+
+5. Processos que exigem atenção
+Lista com status
+
+6. Atividades recentes
+Exemplo:
+- prazo criado
+- tarefa concluída
+- novo cliente adicionado
+
+RESPONSIVIDADE
+O sistema precisa funcionar muito bem em:
+- desktop
+- tablet
+- mobile
+
+No mobile:
+- navegação adaptada
+- cards empilhados
+- tabelas com comportamento responsivo
+- ações principais acessíveis
+
+ESTILO DE INTERFACE
+Quero algo entre:
+- tecnologia premium
+- sistema jurídico moderno
+- dashboard SaaS elegante
+
+Pode usar:
+- sombras suaves
+- contrastes limpos
+- destaque em azul para ações
+- bastante espaço em branco
+- organização visual impecável
+
+Não quero:
+- visual genérico
+- excesso de elementos
+- aparência antiquada
+- cara de ERP pesado
+
+LÓGICA DE MVP
+Importante:
+não criar módulo financeiro complexo
+não criar integração com tribunais nesta primeira versão
+não criar IA nesta primeira versão
+não criar automações complexas nesta primeira versão
+
+O foco é somente:
+- organizar processos
+- organizar prazos
+- alertar riscos
+- vincular clientes
+- vincular tarefas
+
+BANCO DE DADOS / ESTRUTURA LÓGICA
+Estruture a aplicação considerando estas entidades:
+
+Usuários
+- id
+- nome
+- email
+- telefone
+- senha
+
+Clientes
+- id
+- nome
+- cpf_cnpj
+- telefone
+- email
+- observacoes
+
+Processos
+- id
+- numero_processo
+- tribunal
+- area
+- status
+- observacoes
+- cliente_id
+- responsavel_id
+
+Prazos
+- id
+- processo_id
+- tipo
+- descricao
+- data_limite
+- prioridade
+- status
+- responsavel_id
+
+Tarefas
+- id
+- titulo
+- descricao
+- processo_id
+- prazo_id
+- data_limite
+- status
+- responsavel_id
+
+Alertas
+- id
+- tipo
+- mensagem
+- referencia_id
+- referencia_tipo
+- lido
+- criado_em
+
+INTERAÇÕES IMPORTANTES
+- Ao criar um prazo, gerar alerta relacionado
+- Ao vencer um prazo, mostrar badge de vencido
+- Ao aproximar data, destacar como urgente
+- Ao concluir tarefa, atualizar status visual
+- Ao abrir processo, mostrar prazos e tarefas ligados a ele
+
+TELAS DE DETALHE
+Cada detalhe deve ser elegante e útil.
+Nada de telas frias.
+Preciso de UX clara, com blocos bem organizados.
+
+Na página de detalhes do processo:
+- resumo do processo no topo
+- badges de status
+- próximo prazo em destaque
+- abas ou seções:
+  - visão geral
+  - prazos
+  - tarefas
+  - cliente vinculado
+  - observações
+
+IDENTIDADE DA MARCA
+A marca deve aparecer como VIGORA.
+Pode usar logo tipográfica simples enquanto não houver símbolo.
+Transmitir firmeza, vigor, confiança e controle.
+
+CTA E HERO INTERNO
+Se houver alguma área institucional ou de onboarding interno, usar frases como:
+- “Tudo que seu escritório precisa para vigorar.”
+- “Processos, prazos e clientes em um único lugar.”
+- “Mais controle. Menos risco.”
+- “Sua rotina jurídica com mais segurança.”
+
+ONBOARDING INICIAL
+Quero uma experiência inicial simples após o login:
+- mensagem de boas-vindas
+- passo a passo curto
+- cadastrar primeiro cliente
+- cadastrar primeiro processo
+- cadastrar primeiro prazo
+
+Pode ser um checklist inicial visual.
+
+FOCO FINAL
+Crie o app já com aparência de produto real, com interface bem resolvida, estrutura de páginas completa e lógica de navegação consistente.
+Não entregue apenas uma landing page.
+Quero um sistema SaaS funcional em termos de front-end e fluxo de UX, com visual profissional, premium, confiável e pronto para evoluir depois.

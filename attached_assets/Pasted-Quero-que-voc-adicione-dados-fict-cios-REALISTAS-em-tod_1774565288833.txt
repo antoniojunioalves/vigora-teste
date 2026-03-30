@@ -1,0 +1,174 @@
+Quero que você adicione dados fictícios REALISTAS em todo o sistema VIGORA para simular uso real da plataforma.
+
+IMPORTANTE
+- Não usar dados genéricos como "Cliente 1", "Teste", "Lorem Ipsum"
+- Usar nomes brasileiros reais (ex: João Silva, Maria Oliveira, etc.)
+- Usar números de processos com formato realista
+- Usar datas coerentes com prazos (vencidos, próximos, futuros)
+- Usar diversidade de status e situações
+- Criar um cenário que pareça um escritório de advocacia em operação
+
+==================================================
+PROCESSOS (CRIAR MÚLTIPLOS)
+==================================================
+
+Criar pelo menos 10 a 15 processos com dados variados:
+
+Campos:
+- número do processo (formato realista ex: 0001234-56.2024.8.26.0100)
+- cliente (nome realista)
+- área (cível, trabalhista, empresarial, família)
+- tribunal
+- status (ativo, atenção, prazo vencido, concluído)
+
+Distribuir:
+- alguns com prazo vencido
+- alguns com prazo hoje
+- alguns com prazo em 2-3 dias
+- alguns tranquilos
+
+==================================================
+CLIENTES
+==================================================
+
+Criar pelo menos 10 clientes:
+
+Exemplos:
+- Maria Oliveira
+- João Santos LTDA
+- Carlos Ferreira
+- Ana Paula Costa
+- Grupo Almeida Construções
+- Clínica Vida Saúde
+
+Incluir:
+- telefone
+- email
+- CPF/CNPJ fictício plausível
+
+==================================================
+PRAZOS (IMPORTANTE)
+==================================================
+
+Criar múltiplos prazos por processo.
+
+Tipos:
+- petição
+- audiência
+- recurso
+- apelação
+- agravo
+- embargos
+- contestação
+
+Distribuir:
+- prazos vencidos (vermelho)
+- prazos hoje (crítico)
+- prazos em 1-2 dias (urgente)
+- prazos em 7 dias (atenção)
+- prazos futuros (ok)
+
+Exemplos realistas:
+- "Interposição de recurso de apelação"
+- "Apresentar contestação"
+- "Audiência de instrução"
+- "Embargos de declaração"
+
+==================================================
+TAREFAS
+==================================================
+
+Criar tarefas vinculadas a processos:
+
+Exemplos:
+- Redigir petição inicial
+- Revisar contrato
+- Protocolar recurso
+- Analisar documentos do cliente
+- Preparar audiência
+
+Status variados:
+- pendente
+- em andamento
+- concluída
+- atrasada
+
+==================================================
+CONTATOS WHATSAPP
+==================================================
+
+Criar pelo menos 8 contatos:
+
+Exemplos:
+- João Silva (cliente)
+- Maria Oliveira (cliente)
+- Dr. Carlos Mendes (advogado)
+- Secretaria Fórum Central
+- Financeiro Empresa X
+
+Números:
+- usar formato brasileiro válido (+55 ou com DDD)
+
+Status:
+- alguns ativos
+- alguns inativos
+
+==================================================
+VINCULAÇÕES (IMPORTANTE)
+==================================================
+
+Vincular contatos WhatsApp a processos:
+
+- alguns processos com 1 contato
+- alguns com vários contatos
+- alguns sem contato
+
+==================================================
+ALERTAS
+==================================================
+
+Gerar alertas realistas baseados nos dados:
+
+Exemplos:
+- "Prazo para recurso vence em 2 dias"
+- "Prazo vencido para contestação"
+- "Tarefa atrasada: revisar contrato"
+- "Audiência amanhã às 14h"
+
+==================================================
+DASHBOARD
+==================================================
+
+Atualizar o dashboard para refletir os dados:
+
+- Processos ativos (número real)
+- Prazos da semana
+- Vencem hoje
+- Prazos vencidos
+- Taxa de cumprimento
+
+A lista deve mostrar:
+- dados variados
+- situações reais
+- urgência visível
+
+==================================================
+EXPERIÊNCIA FINAL
+==================================================
+
+O sistema deve parecer:
+- um escritório real em operação
+- com riscos, prazos e tarefas reais
+- com urgência visual clara
+- com dados coerentes entre si
+
+Nada genérico.
+Tudo deve parecer real.
+
+IMPORTANTE
+Use esses dados fictícios como estado inicial do sistema (seed/mock), mantendo consistência entre:
+- processos
+- prazos
+- tarefas
+- clientes
+- contatos

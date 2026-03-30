@@ -1,0 +1,262 @@
+Você está trabalhando SOBRE O PROJETO JÁ EXISTENTE do MVP VIGORA. Não crie uma nova proposta abstrata. Quero que você IMPLEMENTE de verdade no código atual as funcionalidades abaixo, alterando a aplicação existente.
+
+IMPORTANTE
+- Analise a estrutura atual do projeto antes de modificar.
+- Preserve o design system e a identidade visual já existente.
+- Reaproveite componentes, layout, sidebar, tabelas, modais e padrões do sistema atual.
+- Adicione as novas telas à navegação real do app.
+- Faça mudanças concretas nas páginas, componentes, rotas, tipos, dados e persistência conforme a stack atual do projeto.
+- Não responda apenas com explicação. Implemente as alterações no app.
+
+==================================================
+PARTE 1 — NOVA FUNCIONALIDADE: CONTATOS WHATSAPP
+==================================================
+
+Quero adicionar uma nova funcionalidade completa de cadastro de contatos WhatsApp.
+
+CRIAR NOVA PÁGINA
+- Criar uma nova página chamada “Contatos WhatsApp”
+- Adicionar essa página na navegação do sistema
+- O item deve aparecer de forma consistente com os outros módulos do app
+
+OBJETIVO
+Permitir cadastrar, listar, editar, excluir e buscar contatos WhatsApp que poderão ser vinculados a processos para notificações futuras.
+
+ESTRUTURA DA TELA
+A página “Contatos WhatsApp” deve conter:
+
+1. Header da página
+- título: “Contatos WhatsApp”
+- subtítulo curto explicando o objetivo
+- botão principal: “Adicionar Contato”
+
+2. Área de busca e filtros
+- campo de busca por nome ou número
+- filtro por status: ativo / inativo / todos
+
+3. Tabela ou lista principal
+Colunas:
+- Nome do contato
+- Número de WhatsApp
+- Email
+- Status
+- Data de criação
+- Ações
+
+Ações:
+- Editar
+- Excluir
+
+4. Modal ou formulário de criação/edição
+Campos:
+- Nome do contato (obrigatório)
+- Número de WhatsApp (obrigatório)
+- Email (opcional)
+- Status (ativo/inativo)
+- Observações (opcional)
+
+REGRAS E VALIDAÇÕES
+- Nome é obrigatório
+- Número é obrigatório
+- Número deve aceitar formatos com ou sem +55
+- Número deve ter pelo menos 10 dígitos úteis
+- Número não pode ser duplicado
+- Mostrar mensagens de erro amigáveis
+- Ao salvar com sucesso, exibir toast visual
+- Ao excluir, pedir confirmação antes
+
+PERSISTÊNCIA
+Se o projeto já estiver conectado ao banco, integrar os contatos WhatsApp ao banco real.
+Se ainda estiver em mock/local storage, implementar na mesma estratégia atual do projeto, sem quebrar a arquitetura.
+
+DADOS / MODELAGEM
+Criar a estrutura necessária para contatos WhatsApp com campos equivalentes a:
+- id
+- nome
+- numero_whatsapp
+- email
+- status
+- observacoes
+- created_at
+- updated_at
+
+==================================================
+PARTE 2 — NOVA FUNCIONALIDADE: VINCULAÇÃO WHATSAPP-PROCESSO
+==================================================
+
+Quero adicionar uma segunda funcionalidade: vincular um ou mais contatos WhatsApp a um processo.
+
+CRIAR NOVA PÁGINA
+- Criar uma nova página chamada “Notificações de Processos”
+- Adicionar essa página na navegação do sistema
+
+OBJETIVO
+Permitir escolher um processo e associar múltiplos contatos WhatsApp a ele.
+
+ESTRUTURA DA TELA
+A página deve conter dois blocos principais ou uma estrutura equivalente bem resolvida:
+
+BLOCO A — LISTA DE PROCESSOS
+- Listar todos os processos já cadastrados no sistema
+- Mostrar colunas:
+  - Número do processo
+  - Cliente
+  - Status
+  - Quantidade de contatos vinculados
+  - Ação para gerenciar vínculos
+
+- Permitir selecionar um processo para visualizar/editar vínculos
+
+BLOCO B — CONTATOS VINCULÁVEIS
+Quando um processo for selecionado:
+- Exibir lista de contatos WhatsApp ativos
+- Cada contato deve aparecer com checkbox
+- Mostrar:
+  - Nome
+  - Número
+  - Status
+- Permitir seleção múltipla
+- Botão “Salvar vinculação”
+
+FUNCIONALIDADES
+- Vincular um ou mais contatos a um processo
+- Desvincular contatos de um processo
+- Visualizar quais contatos já estão vinculados
+- Editar vínculos existentes
+- Exibir os contatos vinculados na listagem dos processos
+- Permitir remoção rápida de um contato vinculado
+
+INTERFACE RECOMENDADA
+Na listagem principal, mostrar:
+- Processo
+- Cliente
+- Status
+- Contatos vinculados (chips/badges ou lista resumida)
+- Botão “Gerenciar”
+
+Ao clicar em gerenciar:
+- abrir modal, drawer ou área lateral bem organizada
+- mostrar o processo selecionado
+- mostrar a lista de contatos com checkboxes
+- marcar automaticamente os contatos já vinculados
+- permitir salvar alterações
+
+DADOS / MODELAGEM
+Criar a estrutura de vinculação entre processos e contatos WhatsApp.
+
+Modelo sugerido:
+- id
+- processo_id
+- contato_whatsapp_id
+- created_at
+
+Regras:
+- um processo pode ter vários contatos
+- um contato pode estar vinculado a vários processos
+- impedir duplicidade da mesma vinculação
+
+==================================================
+PARTE 3 — AJUSTAR O SISTEMA EXISTENTE PARA EXIBIR ISSO
+==================================================
+
+Além de criar as páginas, quero integrar isso ao resto do sistema.
+
+INTEGRAÇÕES NECESSÁRIAS
+1. Na tela de detalhes do processo:
+- adicionar uma seção chamada “Contatos para notificação”
+- mostrar os contatos WhatsApp vinculados àquele processo
+- incluir botão “Gerenciar notificações”
+
+2. Na tabela/lista de processos:
+- adicionar uma indicação visual quando houver contatos vinculados
+- exibir pelo menos a contagem de contatos vinculados
+
+3. Na navegação:
+Adicionar os itens:
+- Contatos WhatsApp
+- Notificações de Processos
+
+4. Na arquitetura:
+- criar componentes reutilizáveis se necessário
+- manter consistência com cards, badges, botões e tabelas já existentes
+
+==================================================
+PARTE 4 — CORREÇÃO DO BUG VISUAL DA TELA DE PRAZOS
+==================================================
+
+IMPORTANTE: há um bug visual na tela “Controle de Prazos”.
+
+PROBLEMA ATUAL
+Na interface atual, existe uma sobreposição/layout quebrado logo abaixo do cabeçalho da página. Elementos de navegação/filtros/abas parecem estar ficando um em cima do outro ou cortados horizontalmente. A informação está bugada e desalinhada.
+
+Quero que você analise e CORRIJA de verdade a tela de prazos já existente.
+
+O que deve ser corrigido:
+- remover qualquer sobreposição de texto e componentes
+- corrigir espaçamentos verticais entre header, tabs, filtros e conteúdo
+- corrigir largura/overflow dos elementos
+- garantir que tabs, filtros e botões não fiquem cortados
+- garantir responsividade correta
+- revisar z-index, margin, padding, sticky headers e containers com overflow hidden se estiverem causando o problema
+- garantir que a barra/tabs abaixo do título não fique escondida ou coberta
+- revisar a hierarquia visual da seção
+
+RESULTADO ESPERADO NA TELA DE PRAZOS
+A tela “Controle de Prazos” deve ficar visualmente limpa e bem estruturada com:
+- cabeçalho da página
+- subtítulo
+- botão “Adicionar Prazo”
+- área de tabs/filtros bem posicionada
+- conteúdo abaixo sem colisão entre elementos
+- responsividade correta em desktop e mobile
+
+==================================================
+PARTE 5 — REQUISITOS DE IMPLEMENTAÇÃO
+==================================================
+
+Quero implementação real, não apenas mock textual.
+
+Faça no código atual:
+- rotas
+- páginas
+- componentes
+- estado
+- integração com dados existentes
+- tipagem/interfaces/modelos
+- persistência seguindo a arquitetura atual
+- validações
+- feedbacks visuais
+- navegação atualizada
+
+Se necessário:
+- criar novos componentes reutilizáveis
+- ajustar serviços/store/hooks
+- ajustar esquema do banco ou mocks
+- ajustar menu lateral
+- ajustar detalhes do processo
+- ajustar tabela de processos
+
+==================================================
+PARTE 6 — EXPERIÊNCIA E QUALIDADE
+==================================================
+
+Mantenha o padrão visual premium do VIGORA:
+- clean
+- jurídico
+- tecnológico
+- confiável
+
+Quero:
+- UX consistente
+- telas funcionais
+- ações reais de criar/editar/excluir/vincular
+- feedback claro
+- zero aparência de feature improvisada
+
+Ao final, deixe o app com:
+1. nova tela Contatos WhatsApp funcional
+2. nova tela Notificações de Processos funcional
+3. vínculo entre contatos e processos funcionando
+4. seção de contatos também dentro do detalhe do processo
+5. bug visual da tela de prazos corrigido
+6. navegação atualizada
