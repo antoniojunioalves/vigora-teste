@@ -100,6 +100,7 @@ function createBuildOptions(extraPlugins = []) {
       "wrangler",
       "zeromq",
       "zeromq-prebuilt",
+      "swagger-ui-express",
       "playwright",
       "puppeteer",
       "puppeteer-core",
